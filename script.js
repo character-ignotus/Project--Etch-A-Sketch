@@ -132,12 +132,12 @@ gridGenerationBtn.addEventListener('click', () => {
 
 
 function gridGeneration() {
-    gridNumber = +prompt('Enter grid number');
+    gridNumber = +prompt(`Enter length of grid's side. Number must be <= 100!`);
 
     let inputValidation = /^[0-9]+$/; // RegEx thats used to check if entered input is a number
 
     while((!(inputValidation.test(gridNumber))) || (gridNumber > 100)) {
-        gridNumber = +prompt('Enter a valid number!');
+        gridNumber = +prompt('Enter a valid input!');
     }
 
     for(i=0; i<gridNumber; i++) {
