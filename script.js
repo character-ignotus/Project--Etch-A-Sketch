@@ -56,6 +56,20 @@ buttonsSection.appendChild(randomColorBtn);
 const explanationSection = document.createElement('div');
 explanationSection.setAttribute('id', 'explanation-style');
 
+    const instructions = document.createElement('div');
+    instructions.setAttribute('id', 'instructions');
+
+    const firstExplanation = document.createElement('div');
+    const secondExplanation = document.createElement('div');
+
+    instructions.textContent = 'INSTRUCTIONS:';
+    firstExplanation.innerHTML = '<strong>dblClick</strong> canvas to enter erase mode!';
+    secondExplanation.innerHTML = '<strong>Click</strong> canvas to exit erase';
+
+    explanationSection.appendChild(instructions);
+    explanationSection.appendChild(firstExplanation);
+    explanationSection.appendChild(secondExplanation);
+
 const buttonSection = document.createElement('div');
 buttonSection.classList.add('buttonContainer');
     const gridGenerationBtn = document.createElement('button');
@@ -84,6 +98,8 @@ const subDivsArray = [];
 let r = 0;
 let g = 0;
 let b = 0;
+
+let currentStyle
 
 gridGenerationBtn.addEventListener('click', () => {
     while(subDivsArray.length > 0) {
@@ -136,7 +152,7 @@ randomColorBtn.addEventListener('click', () => {
             r = Math.floor(Math.random()*255);
             g = Math.floor(Math.random()*255);
             b = Math.floor(Math.random()*255);
-            block.style.backgroundColor = `rgb(${r-((r*percentage)/100)},${g-((g*percentage)/100)},${b-((b*percentage)/100)})`;
+            currentStyle = block.style.backgroundColor = `rgb(${r-((r*percentage)/100)},${g-((g*percentage)/100)},${b-((b*percentage)/100)})`;
         });
     });
 });
@@ -147,7 +163,7 @@ blackColorBtn.addEventListener('click', () => {
         squares.forEach((block) => {
 
         block.addEventListener('mouseenter', () => {
-            block.style.backgroundColor = `rgb(0,0,0)`;
+            currentStyle = block.style.backgroundColor = `rgb(0,0,0)`;
         });
     });
 });
@@ -157,7 +173,17 @@ mainDiv.addEventListener('click', () => {
         squares.forEach((block) => {
 
         block.addEventListener('mouseenter', () => {
-            block.style.backgroundColor = `rgb(255,255,255)`;
+            block.style.backgroundColor = currentStyle;
+        });
+    });
+});
+
+mainDiv.addEventListener('dblclick', () => {
+    let squares = Array.from(document.getElementsByClassName('square'));
+        squares.forEach((block) => {
+
+        block.addEventListener('mouseenter', () => {
+            block.style.backgroundColor = 'white';
         });
     });
 });
@@ -193,7 +219,7 @@ randomColorBtn.addEventListener('mousemove', () => {
     b = Math.floor(Math.random()*255);
 
     randomColorBtn.style.backgroundColor = `rgb(${r},${g},${b})`;
-    randomColorBtn.style.color = 'black';
+    randomColorBtn.style.color = 'white';
     randomColorBtn.style.boxShadow = `black`;
     randomColorBtn.style.transform = 'scale(1.2)';
     randomColorBtn.style.transition = '.15s';
