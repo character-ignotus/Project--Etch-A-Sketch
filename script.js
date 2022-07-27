@@ -26,4 +26,11 @@ function gridGeneration() {
     });
 }
 
-gridGeneration()
+gridGeneration();
+
+let squares = Array.from(document.getElementsByClassName('square'));
+squares.forEach((block) => {
+    block.addEventListener('mouseenter', () => {
+        block.style.backgroundColor = 'black';
+    });
+});
