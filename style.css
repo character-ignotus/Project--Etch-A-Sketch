@@ -1,10 +1,17 @@
+@font-face {
+    font-family: 'GrizzlyAttack';
+    src: url(fonts/Grizzly\ Attack\ -\ PERSONAL\ USE.ttf);
+}
+
 body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    /* flex-wrap: wrap; */
+    gap: 60px;
     margin: 0px;
+    background-color: rgb(180, 172, 172);
 }
 
 #main-container {
@@ -13,6 +20,7 @@ body {
     height: 740px;
     display: flex;
     flex-direction: column;
+    background-color: rgb(255,255,255);
 }
 
 .subContainer {
@@ -29,15 +37,37 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     min-height: 100vh;
-    background-color: red;
-    border: 0px;
+    /* background-image: linear-gradient(135deg, #D62121, #C72C2C, #3A1111); */
+    background-color: #D62121;
+    width: 380px;
 }
 
 .buttonContainer {
     display: flex;
     flex-direction: column;
+}
+
+#title-style {
+    margin-top: 10px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.titleWords {
+    font-family: 'GrizzlyAttack', sans-serif;
+    font-size: 44px;
+}
+
+.image {
+    margin-bottom: 10px;
+    height: 200px;
+    width: 200px;
+    background-image: url();
+    background-size: cover;
+    background-position: center;
 }

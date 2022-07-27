@@ -11,7 +11,32 @@ leftContainer.classList.add('container');
 rightContainer.classList.add('container');
 
 // Left side
+const titleSection = document.createElement('div');
+
+    const firstTitleWord = document.createElement('div');
+    const secondTitleWord = document.createElement('div');
+    const thirdTitleWord = document.createElement('div');
+
+    firstTitleWord.classList.add('titleWords');
+    secondTitleWord.classList.add('titleWords');
+    thirdTitleWord.classList.add('titleWords');
+
+    firstTitleWord.textContent = 'Etch';
+    secondTitleWord.textContent = '-A-';
+    thirdTitleWord.textContent = 'Sketch';
+
+    titleSection.appendChild(firstTitleWord);
+    titleSection.appendChild(secondTitleWord);
+    titleSection.appendChild(thirdTitleWord);
+
+titleSection.setAttribute('id', 'title-style');
+const image1 = document.createElement('div');
+image1.classList.add('image');
 const buttonsSection = document.createElement('div');
+
+// titleSection.textContent = 'Etch \r\n';
+// titleSection.textContent += 'A \r\n';
+// titleSection.textContent += 'Sketch';
 buttonsSection.classList.add('buttonContainer');
     const blackColorBtn = document.createElement('button');
     blackColorBtn.textContent = 'Black Color';
@@ -34,7 +59,9 @@ buttonSection.appendChild(gridGenerationBtn);
 body.insertBefore(leftContainer, mainDiv);
 body.appendChild(rightContainer);
 
+leftContainer.appendChild(titleSection);
 leftContainer.appendChild(buttonsSection);
+leftContainer.appendChild(image1);
 rightContainer.appendChild(buttonSection);
 
 let gridNumber = 0;
