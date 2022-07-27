@@ -39,11 +39,13 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* flex-grow: 1; */
     min-height: 100vh;
-    /* background-image: linear-gradient(135deg, #D62121, #C72C2C, #3A1111); */
     background-color: #D62121;
     width: 380px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-right-width: 5px;
+    border-left-width: 5px;
 }
 
 .buttonContainer {
@@ -63,7 +65,7 @@ body {
 
 .titleWords {
     font-family: 'GrizzlyAttack', sans-serif;
-    font-size: 44px;
+    font-size: 45px;
     background: -webkit-linear-gradient(270deg, #b38955, #ead3a1);
     background-clip: content-box;;
     -webkit-background-clip: text;
@@ -82,9 +84,34 @@ body {
 
 .colorButtons {
     margin: 10px 0 10px 0;
-    font-size: 26px;
+    font-size: 24px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
+    border-radius: 6px;
+    border-width: 3px;
+    box-shadow: 3px 3px black;
+}
+
+#btns-title {
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 1000;
+    background: -webkit-linear-gradient(45deg, rgb(232, 164, 164), rgb(93, 205, 93), rgb(54, 157, 235));
+    background-clip: content-box;;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: rgba(244, 223, 104, 0.818); /* Fallback color */
+}
+
+#explanation-style {
+    height: 200px;
+}
+
+#grid-generation-btn {
+    margin: 10px 0 10px 0;
+    font-size: 34px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     border-radius: 6px;
     border-width: 3px;
     box-shadow: 3px 3px black;

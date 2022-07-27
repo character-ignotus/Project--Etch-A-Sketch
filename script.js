@@ -37,6 +37,7 @@ const buttonsSection = document.createElement('div');
 buttonsSection.classList.add('buttonContainer');
     const btnTitle = document.createElement('div');
     btnTitle.textContent = 'Select drawing color';
+    btnTitle.setAttribute('id', 'btns-title');
 
     const blackColorBtn = document.createElement('button');
     blackColorBtn.textContent = 'Black Color';
@@ -52,10 +53,17 @@ buttonsSection.appendChild(randomColorBtn);
 // Left side
 
 // Right side
+const explanationSection = document.createElement('div');
+explanationSection.setAttribute('id', 'explanation-style');
+
 const buttonSection = document.createElement('div');
 buttonSection.classList.add('buttonContainer');
     const gridGenerationBtn = document.createElement('button');
+    gridGenerationBtn.setAttribute('id', 'grid-generation-btn');
     gridGenerationBtn.textContent = 'Generate Grid';
+
+const image2 = document.createElement('div');
+image2.classList.add('image');
 
 buttonSection.appendChild(gridGenerationBtn);
 // Right side
@@ -66,7 +74,9 @@ body.appendChild(rightContainer);
 leftContainer.appendChild(titleSection);
 leftContainer.appendChild(buttonsSection);
 leftContainer.appendChild(image1);
+rightContainer.appendChild(explanationSection);
 rightContainer.appendChild(buttonSection);
+rightContainer.appendChild(image2);
 
 let gridNumber = 0;
 const subDivsArray = [];
@@ -167,6 +177,15 @@ blackColorBtn.addEventListener('mouseleave', () => {
     blackColorBtn.style.transform = 'scale(1)';
 });
 
+blackColorBtn.addEventListener('mousedown', () => {
+    blackColorBtn.style.transform = 'scale(0.7)';
+    blackColorBtn.style.transition = '.09s';
+});
+
+blackColorBtn.addEventListener('mouseup', () => {
+    blackColorBtn.style.transform = 'scale(1)';
+});
+
 randomColorBtn.addEventListener('mousemove', () => {
 
     r = Math.floor(Math.random()*255);
@@ -185,4 +204,28 @@ randomColorBtn.addEventListener('mouseleave', () => {
     randomColorBtn.style.color = 'black';
     randomColorBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
     randomColorBtn.style.transform = 'scale(1)';
+});
+
+randomColorBtn.addEventListener('mousedown', () => {
+    randomColorBtn.style.transform = 'scale(0.7)';
+    randomColorBtn.style.transition = '.09s';
+});
+
+randomColorBtn.addEventListener('mouseup', () => {
+    randomColorBtn.style.transform = 'scale(1)';
+});
+
+
+gridGenerationBtn.addEventListener('mouseenter', () => {
+    gridGenerationBtn.style.transform = 'scale(1.5)';
+    gridGenerationBtn.style.transition = '.15s';
+});
+
+gridGenerationBtn.addEventListener('mouseleave', () => {
+    gridGenerationBtn.style.transform = 'scale(1)';
+});
+
+gridGenerationBtn.addEventListener('mousedown', () => {
+    gridGenerationBtn.style.transform = 'scale(1)';
+    gridGenerationBtn.style.transition = '.09s';
 });
