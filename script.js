@@ -35,6 +35,12 @@ gridGenerationBtn.addEventListener('click', () => {
 function gridGeneration() {
     gridNumber = +prompt('Enter grid number');
 
+    let inputValidation = /^[0-9]+$/; // RegEx thats used to check if entered is a number
+
+    while((!(inputValidation.test(gridNumber))) || (gridNumber > 100)) {
+        gridNumber = +prompt('Enter a valid number!');
+    }
+
     for(i=0; i<gridNumber; i++) {
         let subDiv = document.createElement('div');
         subDiv.classList.add('subContainer')
