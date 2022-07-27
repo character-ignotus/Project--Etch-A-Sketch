@@ -52,15 +52,22 @@ body {
 }
 
 #title-style {
+    height: 200px;
     margin-top: 10px;
     width: 300px;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
 }
 
 .titleWords {
     font-family: 'GrizzlyAttack', sans-serif;
     font-size: 44px;
+    background: -webkit-linear-gradient(270deg, #b38955, #ead3a1);
+    background-clip: content-box;;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: rgba(244, 223, 104, 0.818); /* Fallback color */
 }
 
 .image {
