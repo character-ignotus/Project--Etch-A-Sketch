@@ -290,8 +290,8 @@ eraseBtn.addEventListener('click', () => {
         eraseBtn.style.transition = '.09s';
     });
 
-    blackColorBtn.addEventListener('mouseup', () => {
-        blackColorBtn.style.transform = 'scale(1)';
+    eraseBtn.addEventListener('mouseup', () => {
+        eraseBtn.style.transform = 'scale(1)';
     });
     
 
