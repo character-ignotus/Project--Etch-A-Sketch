@@ -10,13 +10,32 @@ const rightContainer = document.createElement('div');
 leftContainer.classList.add('container');
 rightContainer.classList.add('container');
 
+// Left side
+const buttonsSection = document.createElement('div');
+buttonsSection.classList.add('buttonContainer');
+    const blackColorBtn = document.createElement('button');
+    blackColorBtn.textContent = 'Black Color';
+    const randomColorBtn = document.createElement('button');
+    randomColorBtn.textContent = 'Random colors';
+
+buttonsSection.appendChild(blackColorBtn);
+buttonsSection.appendChild(randomColorBtn);
+// Left side
+
+// Right side
+const buttonSection = document.createElement('div');
+buttonSection.classList.add('buttonContainer');
+    const gridGenerationBtn = document.createElement('button');
+    gridGenerationBtn.textContent = 'Generate Grid';
+
+buttonSection.appendChild(gridGenerationBtn);
+// Right side
+
 body.insertBefore(leftContainer, mainDiv);
 body.appendChild(rightContainer);
 
-const gridGenerationBtn = document.createElement('button');
-gridGenerationBtn.textContent = 'Generate Grid';
-
-rightContainer.appendChild(gridGenerationBtn);
+leftContainer.appendChild(buttonsSection);
+rightContainer.appendChild(buttonSection);
 
 let gridNumber = 0;
 const subDivsArray = [];
@@ -58,7 +77,10 @@ function gridGeneration() {
     subDivsArray.forEach((item) => {
         mainDiv.appendChild(item);
     });
+}
 
+
+randomColorBtn.addEventListener('click', () => {
     let squares = Array.from(document.getElementsByClassName('square'));
         squares.forEach((block) => {
 
@@ -74,9 +96,18 @@ function gridGeneration() {
             g = Math.floor(Math.random()*255);
             b = Math.floor(Math.random()*255);
             block.style.backgroundColor = `rgb(${r-((r*percentage)/100)},${g-((g*percentage)/100)},${b-((b*percentage)/100)})`;
-
-            console.log(percentage);
         });
     });
-}
+});
+
+
+blackColorBtn.addEventListener('click', () => {
+    let squares = Array.from(document.getElementsByClassName('square'));
+        squares.forEach((block) => {
+
+        block.addEventListener('mouseenter', () => {
+            block.style.backgroundColor = `rgb(0,0,0)`;
+        });
+    });
+});
 
