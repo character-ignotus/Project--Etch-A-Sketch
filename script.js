@@ -61,11 +61,21 @@ function gridGeneration() {
 
     let squares = Array.from(document.getElementsByClassName('square'));
         squares.forEach((block) => {
+
+            let percentage = -10;
+
         block.addEventListener('mouseenter', () => {
+
+            if(percentage < 100) {
+                percentage += 10;
+            }
+
             r = Math.floor(Math.random()*255);
             g = Math.floor(Math.random()*255);
             b = Math.floor(Math.random()*255);
-            block.style.backgroundColor = `rgb(${r},${g},${b})`;
+            block.style.backgroundColor = `rgb(${r-((r*percentage)/100)},${g-((g*percentage)/100)},${b-((b*percentage)/100)})`;
+
+            console.log(percentage);
         });
     });
 }
