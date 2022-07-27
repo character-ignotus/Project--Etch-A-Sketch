@@ -47,9 +47,14 @@ buttonsSection.classList.add('buttonContainer');
     randomColorBtn.textContent = 'Random colors';
     randomColorBtn.classList.add('colorButtons');
 
+    const eraseBtn = document.createElement('button');
+    eraseBtn.textContent = 'Erase';
+    eraseBtn.classList.add('colorButtons');
+
 buttonsSection.appendChild(btnTitle);
 buttonsSection.appendChild(blackColorBtn);
 buttonsSection.appendChild(randomColorBtn);
+buttonsSection.appendChild(eraseBtn);
 // Left side
 
 // Right side
@@ -111,6 +116,21 @@ gridGenerationBtn.addEventListener('click', () => {
     gridGeneration();
 });
 
+    gridGenerationBtn.addEventListener('mouseenter', () => {
+        gridGenerationBtn.style.transform = 'scale(1.5)';
+        gridGenerationBtn.style.transition = '.15s';
+    });
+
+    gridGenerationBtn.addEventListener('mouseleave', () => {
+        gridGenerationBtn.style.transform = 'scale(1)';
+    });
+
+    gridGenerationBtn.addEventListener('mousedown', () => {
+        gridGenerationBtn.style.transform = 'scale(1)';
+        gridGenerationBtn.style.transition = '.09s';
+    });
+
+
 function gridGeneration() {
     gridNumber = +prompt('Enter grid number');
 
@@ -157,6 +177,35 @@ randomColorBtn.addEventListener('click', () => {
     });
 });
 
+    randomColorBtn.addEventListener('mousemove', () => {
+
+        r = Math.floor(Math.random()*255);
+        g = Math.floor(Math.random()*255);
+        b = Math.floor(Math.random()*255);
+
+        randomColorBtn.style.backgroundColor = `rgb(${r},${g},${b})`;
+        randomColorBtn.style.color = 'white';
+        randomColorBtn.style.boxShadow = `black`;
+        randomColorBtn.style.transform = 'scale(1.2)';
+        randomColorBtn.style.transition = '.15s';
+    });
+
+    randomColorBtn.addEventListener('mouseleave', () => {
+        randomColorBtn.style.backgroundColor = 'white';
+        randomColorBtn.style.color = 'black';
+        randomColorBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+        randomColorBtn.style.transform = 'scale(1)';
+    });
+
+    randomColorBtn.addEventListener('mousedown', () => {
+        randomColorBtn.style.transform = 'scale(0.7)';
+        randomColorBtn.style.transition = '.09s';
+    });
+
+    randomColorBtn.addEventListener('mouseup', () => {
+        randomColorBtn.style.transform = 'scale(1)';
+    });
+
 
 blackColorBtn.addEventListener('click', () => {
     let squares = Array.from(document.getElementsByClassName('square'));
@@ -167,6 +216,31 @@ blackColorBtn.addEventListener('click', () => {
         });
     });
 });
+
+    blackColorBtn.addEventListener('mouseenter', () => {
+        blackColorBtn.style.backgroundColor = 'black';
+        blackColorBtn.style.color = 'white';
+        blackColorBtn.style.boxShadow = '3px 3px rgb(255, 255, 255)';
+        blackColorBtn.style.transform = 'scale(1.2)';
+        blackColorBtn.style.transition = '.15s';
+    });
+
+    blackColorBtn.addEventListener('mouseleave', () => {
+        blackColorBtn.style.backgroundColor = 'white';
+        blackColorBtn.style.color = 'black';
+        blackColorBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+        blackColorBtn.style.transform = 'scale(1)';
+    });
+
+    blackColorBtn.addEventListener('mousedown', () => {
+        blackColorBtn.style.transform = 'scale(0.7)';
+        blackColorBtn.style.transition = '.09s';
+    });
+
+    blackColorBtn.addEventListener('mouseup', () => {
+        blackColorBtn.style.transform = 'scale(1)';
+    });
+
 
 mainDiv.addEventListener('click', () => {
     let squares = Array.from(document.getElementsByClassName('square'));
@@ -188,70 +262,37 @@ mainDiv.addEventListener('dblclick', () => {
     });
 });
 
-blackColorBtn.addEventListener('mouseenter', () => {
-    blackColorBtn.style.backgroundColor = 'black';
-    blackColorBtn.style.color = 'white';
-    blackColorBtn.style.boxShadow = '3px 3px rgb(255, 255, 255)';
-    blackColorBtn.style.transform = 'scale(1.2)';
-    blackColorBtn.style.transition = '.15s';
+
+eraseBtn.addEventListener('click', () => {
+    let squares = Array.from(document.getElementsByClassName('square'));
+        squares.forEach((block) => {
+            block.style.backgroundColor = 'white';
+    });
 });
 
-blackColorBtn.addEventListener('mouseleave', () => {
-    blackColorBtn.style.backgroundColor = 'white';
-    blackColorBtn.style.color = 'black';
-    blackColorBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
-    blackColorBtn.style.transform = 'scale(1)';
-});
+    eraseBtn.addEventListener('mouseenter', () => {
+        eraseBtn.style.backgroundColor = 'white';
+        eraseBtn.style.color = 'white';
+        eraseBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+        eraseBtn.style.transform = 'scale(1.2)';
+        eraseBtn.style.transition = '.15s';
+    });
 
-blackColorBtn.addEventListener('mousedown', () => {
-    blackColorBtn.style.transform = 'scale(0.7)';
-    blackColorBtn.style.transition = '.09s';
-});
+    eraseBtn.addEventListener('mouseleave', () => {
+        eraseBtn.style.backgroundColor = 'white';
+        eraseBtn.style.color = 'black';
+        eraseBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+        eraseBtn.style.transform = 'scale(1)';
+    });
 
-blackColorBtn.addEventListener('mouseup', () => {
-    blackColorBtn.style.transform = 'scale(1)';
-});
+    eraseBtn.addEventListener('mousedown', () => {
+        eraseBtn.style.transform = 'scale(0.7)';
+        eraseBtn.style.transition = '.09s';
+    });
 
-randomColorBtn.addEventListener('mousemove', () => {
-
-    r = Math.floor(Math.random()*255);
-    g = Math.floor(Math.random()*255);
-    b = Math.floor(Math.random()*255);
-
-    randomColorBtn.style.backgroundColor = `rgb(${r},${g},${b})`;
-    randomColorBtn.style.color = 'white';
-    randomColorBtn.style.boxShadow = `black`;
-    randomColorBtn.style.transform = 'scale(1.2)';
-    randomColorBtn.style.transition = '.15s';
-});
-
-randomColorBtn.addEventListener('mouseleave', () => {
-    randomColorBtn.style.backgroundColor = 'white';
-    randomColorBtn.style.color = 'black';
-    randomColorBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
-    randomColorBtn.style.transform = 'scale(1)';
-});
-
-randomColorBtn.addEventListener('mousedown', () => {
-    randomColorBtn.style.transform = 'scale(0.7)';
-    randomColorBtn.style.transition = '.09s';
-});
-
-randomColorBtn.addEventListener('mouseup', () => {
-    randomColorBtn.style.transform = 'scale(1)';
-});
+    blackColorBtn.addEventListener('mouseup', () => {
+        blackColorBtn.style.transform = 'scale(1)';
+    });
+    
 
 
-gridGenerationBtn.addEventListener('mouseenter', () => {
-    gridGenerationBtn.style.transform = 'scale(1.5)';
-    gridGenerationBtn.style.transition = '.15s';
-});
-
-gridGenerationBtn.addEventListener('mouseleave', () => {
-    gridGenerationBtn.style.transform = 'scale(1)';
-});
-
-gridGenerationBtn.addEventListener('mousedown', () => {
-    gridGenerationBtn.style.transform = 'scale(1)';
-    gridGenerationBtn.style.transition = '.09s';
-});
