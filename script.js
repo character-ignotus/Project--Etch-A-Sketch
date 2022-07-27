@@ -57,7 +57,7 @@ gridGenerationBtn.addEventListener('click', () => {
 function gridGeneration() {
     gridNumber = +prompt('Enter grid number');
 
-    let inputValidation = /^[0-9]+$/; // RegEx thats used to check if entered is a number
+    let inputValidation = /^[0-9]+$/; // RegEx thats used to check if entered input is a number
 
     while((!(inputValidation.test(gridNumber))) || (gridNumber > 100)) {
         gridNumber = +prompt('Enter a valid number!');
@@ -111,3 +111,12 @@ blackColorBtn.addEventListener('click', () => {
     });
 });
 
+mainDiv.addEventListener('click', () => {
+    let squares = Array.from(document.getElementsByClassName('square'));
+        squares.forEach((block) => {
+
+        block.addEventListener('mouseenter', () => {
+            block.style.backgroundColor = `rgb(255,255,255)`;
+        });
+    });
+});
