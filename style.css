@@ -49,6 +49,7 @@ body {
 .buttonContainer {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 #title-style {
@@ -77,4 +78,14 @@ body {
     background-image: url();
     background-size: cover;
     background-position: center;
+}
+
+.colorButtons {
+    margin: 10px 0 10px 0;
+    font-size: 26px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    border-radius: 6px;
+    border-width: 3px;
+    box-shadow: 3px 3px black;
 }

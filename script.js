@@ -34,15 +34,19 @@ const image1 = document.createElement('div');
 image1.classList.add('image');
 const buttonsSection = document.createElement('div');
 
-// titleSection.textContent = 'Etch \r\n';
-// titleSection.textContent += 'A \r\n';
-// titleSection.textContent += 'Sketch';
 buttonsSection.classList.add('buttonContainer');
+    const btnTitle = document.createElement('div');
+    btnTitle.textContent = 'Select drawing color';
+
     const blackColorBtn = document.createElement('button');
     blackColorBtn.textContent = 'Black Color';
+    blackColorBtn.classList.add('colorButtons');
+    
     const randomColorBtn = document.createElement('button');
     randomColorBtn.textContent = 'Random colors';
+    randomColorBtn.classList.add('colorButtons');
 
+buttonsSection.appendChild(btnTitle);
 buttonsSection.appendChild(blackColorBtn);
 buttonsSection.appendChild(randomColorBtn);
 // Left side
@@ -146,4 +150,39 @@ mainDiv.addEventListener('click', () => {
             block.style.backgroundColor = `rgb(255,255,255)`;
         });
     });
+});
+
+blackColorBtn.addEventListener('mouseenter', () => {
+    blackColorBtn.style.backgroundColor = 'black';
+    blackColorBtn.style.color = 'white';
+    blackColorBtn.style.boxShadow = '3px 3px rgb(255, 255, 255)';
+    blackColorBtn.style.transform = 'scale(1.2)';
+    blackColorBtn.style.transition = '.15s';
+});
+
+blackColorBtn.addEventListener('mouseleave', () => {
+    blackColorBtn.style.backgroundColor = 'white';
+    blackColorBtn.style.color = 'black';
+    blackColorBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+    blackColorBtn.style.transform = 'scale(1)';
+});
+
+randomColorBtn.addEventListener('mousemove', () => {
+
+    r = Math.floor(Math.random()*255);
+    g = Math.floor(Math.random()*255);
+    b = Math.floor(Math.random()*255);
+
+    randomColorBtn.style.backgroundColor = `rgb(${r},${g},${b})`;
+    randomColorBtn.style.color = 'black';
+    randomColorBtn.style.boxShadow = `black`;
+    randomColorBtn.style.transform = 'scale(1.2)';
+    randomColorBtn.style.transition = '.15s';
+});
+
+randomColorBtn.addEventListener('mouseleave', () => {
+    randomColorBtn.style.backgroundColor = 'white';
+    randomColorBtn.style.color = 'black';
+    randomColorBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+    randomColorBtn.style.transform = 'scale(1)';
 });
