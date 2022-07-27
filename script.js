@@ -21,6 +21,9 @@ rightContainer.appendChild(gridGenerationBtn);
 let gridNumber = 0;
 const subDivsArray = [];
 
+let r = 0;
+let g = 0;
+let b = 0;
 
 gridGenerationBtn.addEventListener('click', () => {
     while(subDivsArray.length > 0) {
@@ -59,7 +62,10 @@ function gridGeneration() {
     let squares = Array.from(document.getElementsByClassName('square'));
         squares.forEach((block) => {
         block.addEventListener('mouseenter', () => {
-            block.style.backgroundColor = 'black';
+            r = Math.floor(Math.random()*255);
+            g = Math.floor(Math.random()*255);
+            b = Math.floor(Math.random()*255);
+            block.style.backgroundColor = `rgb(${r},${g},${b})`;
         });
     });
 }
