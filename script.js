@@ -1,17 +1,20 @@
+// Main page elements
 const body = document.querySelector('body');
-
 const mainDiv = document.createElement('div');
-mainDiv.setAttribute('id', 'main-container');
-body.appendChild(mainDiv);
-
 const leftContainer = document.createElement('div');
 const rightContainer = document.createElement('div');
 
+mainDiv.setAttribute('id', 'main-container');
 leftContainer.classList.add('container');
 rightContainer.classList.add('container');
 
-// Left side
+body.appendChild(mainDiv);
+body.insertBefore(leftContainer, mainDiv);
+body.appendChild(rightContainer);
+
+// Left container elements
 const titleSection = document.createElement('div');
+titleSection.setAttribute('id', 'title-style');
 
     const firstTitleWord = document.createElement('div');
     const secondTitleWord = document.createElement('div');
@@ -28,42 +31,42 @@ const titleSection = document.createElement('div');
     titleSection.appendChild(firstTitleWord);
     titleSection.appendChild(secondTitleWord);
     titleSection.appendChild(thirdTitleWord);
-
-titleSection.setAttribute('id', 'title-style');
-const image1 = document.createElement('div');
-image1.classList.add('image');
-const buttonsSection = document.createElement('div');
-
-buttonsSection.classList.add('buttonContainer');
-    const btnTitle = document.createElement('div');
-    btnTitle.textContent = 'Select drawing color';
-    btnTitle.setAttribute('id', 'btns-title');
-
-    const blackColorBtn = document.createElement('button');
-    blackColorBtn.textContent = 'Black Color';
-    blackColorBtn.classList.add('colorButtons');
     
-    const randomColorBtn = document.createElement('button');
-    randomColorBtn.textContent = 'Random colors';
-    randomColorBtn.classList.add('colorButtons');
+const buttonsSection = document.createElement('div');
+buttonsSection.classList.add('buttonContainer');
 
+    const btnTitle = document.createElement('div');
+    const blackColorBtn = document.createElement('button');
+    const randomColorBtn = document.createElement('button');
     const eraseBtn = document.createElement('button');
+
+    btnTitle.textContent = 'Select drawing color';
+    blackColorBtn.textContent = 'Black Color';
+    randomColorBtn.textContent = 'Random colors';
     eraseBtn.textContent = 'Erase';
+
+    btnTitle.setAttribute('id', 'btns-title');
+    blackColorBtn.classList.add('colorButtons');
+    randomColorBtn.classList.add('colorButtons');
     eraseBtn.classList.add('colorButtons');
 
-buttonsSection.appendChild(btnTitle);
-buttonsSection.appendChild(blackColorBtn);
-buttonsSection.appendChild(randomColorBtn);
-buttonsSection.appendChild(eraseBtn);
-// Left side
+    buttonsSection.appendChild(btnTitle);
+    buttonsSection.appendChild(blackColorBtn);
+    buttonsSection.appendChild(randomColorBtn);
+    buttonsSection.appendChild(eraseBtn);
 
-// Right side
+const image1 = document.createElement('div');
+image1.classList.add('image');
+
+leftContainer.appendChild(titleSection);
+leftContainer.appendChild(buttonsSection);
+leftContainer.appendChild(image1);
+   
+// Right container elements
 const explanationSection = document.createElement('div');
 explanationSection.setAttribute('id', 'explanation-style');
 
     const instructions = document.createElement('div');
-    instructions.setAttribute('id', 'instructions');
-
     const firstExplanation = document.createElement('div');
     const secondExplanation = document.createElement('div');
 
@@ -71,69 +74,37 @@ explanationSection.setAttribute('id', 'explanation-style');
     firstExplanation.innerHTML = '<strong>dblClick</strong> canvas to enter erase mode!';
     secondExplanation.innerHTML = '<strong>Click</strong> canvas to exit erase';
 
+    instructions.setAttribute('id', 'instructions');
+
     explanationSection.appendChild(instructions);
     explanationSection.appendChild(firstExplanation);
     explanationSection.appendChild(secondExplanation);
 
 const buttonSection = document.createElement('div');
 buttonSection.classList.add('buttonContainer');
-    const gridGenerationBtn = document.createElement('button');
-    gridGenerationBtn.setAttribute('id', 'grid-generation-btn');
-    gridGenerationBtn.textContent = 'Generate Grid';
 
+    const gridGenerationBtn = document.createElement('button');
+    gridGenerationBtn.textContent = 'Generate Grid';
+    gridGenerationBtn.setAttribute('id', 'grid-generation-btn');
+    buttonSection.appendChild(gridGenerationBtn);
+    
 const image2 = document.createElement('div');
 image2.classList.add('image');
 
-buttonSection.appendChild(gridGenerationBtn);
-// Right side
-
-body.insertBefore(leftContainer, mainDiv);
-body.appendChild(rightContainer);
-
-leftContainer.appendChild(titleSection);
-leftContainer.appendChild(buttonsSection);
-leftContainer.appendChild(image1);
 rightContainer.appendChild(explanationSection);
 rightContainer.appendChild(buttonSection);
 rightContainer.appendChild(image2);
 
+// Store variable's current states
 let gridNumber = 0;
-const subDivsArray = [];
-
 let r = 0;
 let g = 0;
 let b = 0;
-
 let currentStyle
-
-gridGenerationBtn.addEventListener('click', () => {
-    while(subDivsArray.length > 0) {
-        subDivsArray.pop();
-    }
-
-    mainDiv.replaceChildren();
-
-    gridGeneration();
-});
-
-    gridGenerationBtn.addEventListener('mouseenter', () => {
-        gridGenerationBtn.style.transform = 'scale(1.5)';
-        gridGenerationBtn.style.transition = '.15s';
-    });
-
-    gridGenerationBtn.addEventListener('mouseleave', () => {
-        gridGenerationBtn.style.transform = 'scale(1)';
-    });
-
-    gridGenerationBtn.addEventListener('mousedown', () => {
-        gridGenerationBtn.style.transform = 'scale(1)';
-        gridGenerationBtn.style.transition = '.09s';
-    });
-
+const subDivsArray = [];
 
 function gridGeneration() {
     gridNumber = +prompt(`Enter length of grid's side. Number must be <= 100!`);
-
     let inputValidation = /^[0-9]+$/; // RegEx thats used to check if entered input is a number
 
     while((!(inputValidation.test(gridNumber))) || (gridNumber > 100)) {
@@ -156,7 +127,30 @@ function gridGeneration() {
     });
 }
 
+// Grid generation btn event listeners
+gridGenerationBtn.addEventListener('click', () => {
+    while(subDivsArray.length > 0) {
+        subDivsArray.pop();
+    }
+    mainDiv.replaceChildren();
+    gridGeneration();
+});
 
+    gridGenerationBtn.addEventListener('mouseenter', () => {
+        gridGenerationBtn.style.transform = 'scale(1.5)';
+        gridGenerationBtn.style.transition = '.15s';
+    });
+
+    gridGenerationBtn.addEventListener('mouseleave', () => {
+        gridGenerationBtn.style.transform = 'scale(1)';
+    });
+
+    gridGenerationBtn.addEventListener('mousedown', () => {
+        gridGenerationBtn.style.transform = 'scale(1)';
+        gridGenerationBtn.style.transition = '.09s';
+    });
+
+// Random color btn event listeners
 randomColorBtn.addEventListener('click', () => {
     let squares = Array.from(document.getElementsByClassName('square'));
         squares.forEach((block) => {
@@ -206,7 +200,7 @@ randomColorBtn.addEventListener('click', () => {
         randomColorBtn.style.transform = 'scale(1)';
     });
 
-
+// Black color btn event listeners
 blackColorBtn.addEventListener('click', () => {
     let squares = Array.from(document.getElementsByClassName('square'));
         squares.forEach((block) => {
@@ -241,7 +235,39 @@ blackColorBtn.addEventListener('click', () => {
         blackColorBtn.style.transform = 'scale(1)';
     });
 
+    eraseBtn.addEventListener('click', () => {
+        let squares = Array.from(document.getElementsByClassName('square'));
+            squares.forEach((block) => {
+                block.style.backgroundColor = 'white';
+        });
+    });
 
+// Erase btn event listeners
+        eraseBtn.addEventListener('mouseenter', () => {
+            eraseBtn.style.backgroundColor = 'white';
+            eraseBtn.style.color = 'white';
+            eraseBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+            eraseBtn.style.transform = 'scale(1.2)';
+            eraseBtn.style.transition = '.15s';
+        });
+    
+        eraseBtn.addEventListener('mouseleave', () => {
+            eraseBtn.style.backgroundColor = 'white';
+            eraseBtn.style.color = 'black';
+            eraseBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
+            eraseBtn.style.transform = 'scale(1)';
+        });
+    
+        eraseBtn.addEventListener('mousedown', () => {
+            eraseBtn.style.transform = 'scale(0.7)';
+            eraseBtn.style.transition = '.09s';
+        });
+    
+        eraseBtn.addEventListener('mouseup', () => {
+            eraseBtn.style.transform = 'scale(1)';
+        });
+
+// MainDiv container event listeners
 mainDiv.addEventListener('click', () => {
     let squares = Array.from(document.getElementsByClassName('square'));
         squares.forEach((block) => {
@@ -263,36 +289,7 @@ mainDiv.addEventListener('dblclick', () => {
 });
 
 
-eraseBtn.addEventListener('click', () => {
-    let squares = Array.from(document.getElementsByClassName('square'));
-        squares.forEach((block) => {
-            block.style.backgroundColor = 'white';
-    });
-});
 
-    eraseBtn.addEventListener('mouseenter', () => {
-        eraseBtn.style.backgroundColor = 'white';
-        eraseBtn.style.color = 'white';
-        eraseBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
-        eraseBtn.style.transform = 'scale(1.2)';
-        eraseBtn.style.transition = '.15s';
-    });
-
-    eraseBtn.addEventListener('mouseleave', () => {
-        eraseBtn.style.backgroundColor = 'white';
-        eraseBtn.style.color = 'black';
-        eraseBtn.style.boxShadow = '3px 3px rgb(0, 0, 0)';
-        eraseBtn.style.transform = 'scale(1)';
-    });
-
-    eraseBtn.addEventListener('mousedown', () => {
-        eraseBtn.style.transform = 'scale(0.7)';
-        eraseBtn.style.transition = '.09s';
-    });
-
-    eraseBtn.addEventListener('mouseup', () => {
-        eraseBtn.style.transform = 'scale(1)';
-    });
     
 
 
