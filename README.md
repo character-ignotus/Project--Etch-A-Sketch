@@ -1,7 +1,7 @@
 # Project: "Etch-A-Sketch"
 
 ### Description of project: 
-A browser version of a byproduct between a Sketchpad & a Etch-A-Sketch. This program lets you generate a NxN grid, whit a max number of grid squares per side of 100 & draw on it by passing over the squares using your mouse. You can draw in black or in random RGB colors. When drawing with random RGB colors each pass tough a square adds to it 10% black, so that after ten passes the square is completely black.
+A browser version of a byproduct between a Sketchpad & a Etch-A-Sketch. This program lets you generate a NxN grid, whit a max number of grid squares per side of 100 & draw on it by passing over the squares using your mouse. You can draw in black or in random RGB colors. When drawing with random RGB colors each pass tough a square adds to it 10% black, so that after ten passes the square is completely black. To start drawing [visit this site](https://character-ignotus.github.io/Project--Etch-A-Sketch/).
 
 ### Acquired skills through the project:
 
@@ -20,4 +20,9 @@ A browser version of a byproduct between a Sketchpad & a Etch-A-Sketch. This pro
 
 3. DOM Manipulation:
     - Dynamically adding style properties based on certain events
+
+
+### Acknowledgement:
+
+Project inspiration from [The Odin Project](https://www.theodinproject.com/)
 
